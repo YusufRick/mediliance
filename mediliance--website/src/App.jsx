@@ -1,13 +1,15 @@
 // src/App.jsx
 import React from 'react';
-import HomePage from './pages/HomePage';
+import Navbar from './components/NavBar';
+import Router from './router.jsx';
 
-function App() {
+const App = () => {
   return (
     <div className="font-sans min-h-screen bg-white text-gray-900">
-      <HomePage />
+      <Navbar />
+      <Router />
     </div>
   );
-}
+};
 
 export default App;
