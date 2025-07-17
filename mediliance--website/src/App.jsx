@@ -1,17 +1,13 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// src/App.jsx
+import React from 'react';
+import HomePage from './pages/HomePage';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div className="text-2xl text-blue-600 font-bold">Tailwind is working!</div>
-
-    </>
-  )
+    <div className="font-sans min-h-screen bg-white text-gray-900">
+      <HomePage />
+    </div>
+  );
 }
 
-export default App
+export default App;
