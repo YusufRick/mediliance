@@ -1,44 +1,44 @@
-// src/pages/HomePage.jsx
 import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
+import Shareholders from '../components/ShareHolder';
 
 const fadeInUp = {
-  hidden: { opacity: 0, y: 40 },
+  hidden: { opacity: 0, y: 50 },
   visible: { opacity: 1, y: 0 }
 };
 
 const HomePage = () => {
   const contactRef = useRef(null);
 
- const handleScrollToContact = () => {
-  if (!contactRef.current) return;
+  const handleScrollToContact = () => {
+    if (!contactRef.current) return;
 
-  const targetY = contactRef.current.getBoundingClientRect().top + window.pageYOffset;
-  const startY = window.pageYOffset;
-  const duration = 1200; // in milliseconds (slow = higher number)
-  const startTime = performance.now();
+    const targetY = contactRef.current.getBoundingClientRect().top + window.pageYOffset;
+    const startY = window.pageYOffset;
+    const duration = 1200;
+    const startTime = performance.now();
 
-  const easeOutCubic = (t) => (--t) * t * t + 1;
+    const easeOutCubic = (t) => (--t) * t * t + 1;
 
-  const animateScroll = (currentTime) => {
-    const elapsed = currentTime - startTime;
-    const progress = Math.min(elapsed / duration, 1);
-    const easedProgress = easeOutCubic(progress);
-    window.scrollTo(0, startY + (targetY - startY) * easedProgress);
+    const animateScroll = (currentTime) => {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const easedProgress = easeOutCubic(progress);
+      window.scrollTo(0, startY + (targetY - startY) * easedProgress);
 
-    if (elapsed < duration) {
-      requestAnimationFrame(animateScroll);
-    }
+      if (elapsed < duration) {
+        requestAnimationFrame(animateScroll);
+      }
+    };
+
+    requestAnimationFrame(animateScroll);
   };
-
-  requestAnimationFrame(animateScroll);
-};
-
 
   const sections = [
     {
       id: "about",
       title: "About Mediliance",
+      className: "about-container",
       content:
         "Mediliance (M) Sdn. Bhd. is a leading Malaysian distributor of medical and surgical equipment based in Petaling Jaya. With over two decades of experience, we provide reliable healthcare solutions, from equipment supply to technical support and hospital project management."
     },
@@ -46,10 +46,10 @@ const HomePage = () => {
       id: "services",
       title: "Our Services",
       content: (
-        <ul>
-          <li><strong>Medical Equipment Supply</strong> – Quality diagnostic and surgical instruments for hospitals and clinics.</li>
-          <li><strong>Biomedical Engineering Services</strong> – Equipment maintenance, calibration, and servicing by certified professionals.</li>
-          <li><strong>Hospital Project Management</strong> – Turnkey delivery and setup for healthcare infrastructure and procurement.</li>
+        <ul className='services-container'>
+          <li>Medical Equipment Supply – Quality diagnostic and surgical instruments for hospitals and clinics.</li>
+          <li>Biomedical Engineering Services – Equipment maintenance, calibration, and servicing by certified professionals.</li>
+          <li>Hospital Project Management – Turnkey delivery and setup for healthcare infrastructure and procurement.</li>
         </ul>
       )
     },
@@ -92,25 +92,49 @@ const HomePage = () => {
         </motion.div>
       </section>
 
-      {/* Dynamic Sections */}
-      {sections.map((section) => (
-        <motion.section
-          key={section.id}
-          id={section.id}
-          ref={section.id === "contact" ? contactRef : null}
-          className="section"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          variants={fadeInUp}
-        >
-          <div className="section-content">
-            <h2>{section.title}</h2>
-            {section.content}
-          </div>
-        </motion.section>
-      ))}
+      {/* Dynamic Sections with Shareholders inserted before Contact */}
+      {sections.map((section) => {
+        if (section.id === "contact") {
+          return (
+            <React.Fragment key="shareholders-and-contact">
+              <Shareholders />
+              <motion.section
+                id={section.id}
+                ref={contactRef}
+                className="section"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.7, delay: 0.1 }}
+                variants={fadeInUp}
+              >
+                <div className="section-content">
+                  <h2>{section.title}</h2>
+                  {section.content}
+                </div>
+              </motion.section>
+            </React.Fragment>
+          );
+        }
+
+        return (
+          <motion.section
+            key={section.id}
+            id={section.id}
+            className="section"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.7, delay: 0.1 }}
+            variants={fadeInUp}
+          >
+            <div className="section-content">
+              <h2>{section.title}</h2>
+              {section.content}
+            </div>
+          </motion.section>
+        );
+      })}
     </main>
   );
 };

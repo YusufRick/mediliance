@@ -76,6 +76,32 @@ nav li:not(:last-child)::after {
   box-shadow: 1px 0 1px rgba(0, 0, 0, 0.5); /* soft shadow line */
   background-color: transparent; /* no solid border */
 }
+
+//nav bar for mobile
+
+@media (max-width: 600px) {
+  nav .nav-container {
+    padding: 1rem;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  nav li {
+    padding-right: 0;
+    margin-right: 0;
+  }
+
+  nav li:not(:last-child)::after {
+    display: none;
+  }
+}
+
 //end of nav style
 
 
@@ -99,22 +125,30 @@ nav li:not(:last-child)::after {
   font-size: 3rem;
   margin-bottom: 1rem;
   color: #1f2937;
+    @media (min-width: 768px) {
+    font-size: 3rem;
+  }
 }
 
 .hero p {
   font-size: 1.125rem;
   color: #4b5563;
+  @media (min-width: 768px) {
+    font-size: 1.125rem;
+  }
 }
 
+//end of hero section
 .section {
-  padding: 5rem 1.5rem;
-  max-width: 1000px;
-  margin: 0 auto;
+  padding: 5rem 1rem;             /* Match inner horizontal padding */
+  max-width: 1200px;              /* Match container width */
+  margin: 0 auto;                 /* Center horizontally */
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
   align-items: center;
 }
+
 
 .section img {
   max-width: 100%;
@@ -144,3 +178,133 @@ html {
   scroll-behavior:smooth;
 }
 //end of code
+
+// shareholder container style
+
+.shareholders-container {
+  min-height: 100vh;
+  padding: 4rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+// each card design
+.slick-slide > div {
+  margin: 0 0.75rem; /* ~12px spacing like Tailwind's mx-3 */
+}
+//each list inside
+.slick-list {
+  margin: 0 -0.75rem;
+}
+
+.shareholders-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+.slick-dots {
+  display: flex !important;
+  justify-content: center;
+  margin-top: 1rem;
+}
+.shareholders-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+
+  @media (min-width: 1024px) {
+    flex-direction: row;
+  }
+}
+
+.shareholders-header h1 {
+  font-size: 2.25rem; /* Equivalent to Tailwind text-4xl */
+  font-weight: 600;
+  text-align: center;
+
+  @media (min-width: 1024px) {
+    text-align: left;
+  }
+}
+
+.shareholders-header p {
+  margin-top: 0.5rem;
+  text-align: center;
+  color: #555;
+
+  @media (min-width: 1024px) {
+    text-align: left;
+  }
+}
+
+.slider-controls {
+  display: flex;
+  gap: 1.25rem;
+  margin-top: 1rem;
+
+  @media (min-width: 1024px) {
+    margin-top: 0;
+  }
+}
+
+.slider-controls button {
+  background-color: #d5f2ec;
+  color: #1f2937;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.slider-controls button:active {
+  background-color: #ade9dc;
+}
+
+.shareholders-slider {
+  margin-top: 1.25rem;
+  padding: 0; /* ← or keep small like 0 0.5rem if needed */
+}
+
+.shareholder-card {
+  height: 350px;
+  background-color: white;
+  color: black;
+  border-radius: 0.75rem;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.24);
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.shareholder-image {
+  height: 14rem;
+  width: 100%;
+  object-fit: cover;
+  border-top-left-radius: 0.75rem;
+  border-top-right-radius: 0.75rem;
+}
+
+.shareholder-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 1rem;
+}
+
+.shareholder-info h1 {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.shareholder-info h3 {
+  padding-top: 0.5rem;
+  font-size: 1rem;
+  color: #4b5563;
+}
