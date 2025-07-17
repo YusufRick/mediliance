@@ -1,0 +1,115 @@
+// src/index.scss
+
+body {
+  margin: 0;
+  font-family: 'Helvetica Neue', sans-serif;
+  background-color: #ffffff;
+  color: #1f2937;
+}
+
+nav {
+  background: #ffffff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 50;
+}
+
+nav .nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav ul {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+nav a {
+  text-decoration: none;
+  color: #1f2937;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #2563eb;
+}
+
+nav a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background-color: #2563eb;
+  transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+.hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: url('/hero-bg.jpg') center/cover no-repeat;
+  text-align: center;
+}
+
+.hero-content {
+  background-color: rgba(255,255,255,0.85);
+  padding: 2rem;
+  border-radius: 1rem;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: #1f2937;
+}
+
+.hero p {
+  font-size: 1.125rem;
+  color: #4b5563;
+}
+
+.section {
+  padding: 5rem 1.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: center;
+}
+
+.section img {
+  max-width: 100%;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.section-content {
+  flex: 1;
+}
+
+.section h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #1f2937;
+}
+
+.section p {
+  font-size: 1rem;
+  color: #4b5563;
+}
