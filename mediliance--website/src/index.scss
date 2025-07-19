@@ -1,5 +1,4 @@
-// src/index.scss
-
+// Reset and global
 body {
   margin: 0;
   font-family: 'Saudagar', sans-serif;
@@ -7,17 +6,20 @@ body {
   color: #1f2937;
 }
 
-// navigation bar
+html {
+  scroll-behavior: smooth;
+}
+
+// Navbar
 nav {
   background: #ffffff;
   box-shadow: 0 2px 4px rgba(0,0,0,0.5);
-  border-bottom: 2px solid #2563eb; /* ✅ Thin blue line */
+  border-bottom: 2px solid #2563eb;
   position: fixed;
   width: 100%;
   top: 0;
   z-index: 50;
 }
-
 
 nav .nav-container {
   max-width: 1200px;
@@ -33,7 +35,6 @@ nav ul {
   list-style: none;
 }
 
-//nav item
 nav a {
   text-decoration: none;
   color: #1f2937;
@@ -73,11 +74,9 @@ nav li:not(:last-child)::after {
   right: 0;
   height: 80%;
   width: 1px;
-  box-shadow: 1px 0 1px rgba(0, 0, 0, 0.5); /* soft shadow line */
-  background-color: transparent; /* no solid border */
+  box-shadow: 1px 0 1px rgba(0, 0, 0, 0.5);
+  background-color: transparent;
 }
-
-//nav bar for mobile
 
 @media (max-width: 600px) {
   nav .nav-container {
@@ -102,21 +101,20 @@ nav li:not(:last-child)::after {
   }
 }
 
-//end of nav style
-
-
-//hero section
+// Hero Section
 .hero {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: url('/hero-bg.jpg') center/cover no-repeat;
+  background-color: #1f2937;
+  //background: url('/hero-bg.jpg') center/cover no-repeat;
   text-align: center;
+  color: white;
 }
 
 .hero-content {
-  background-color: rgba(255,255,255,0.85);
+  background-color: #1f2937;
   padding: 2rem;
   border-radius: 1rem;
 }
@@ -124,8 +122,9 @@ nav li:not(:last-child)::after {
 .hero h1 {
   font-size: 3rem;
   margin-bottom: 1rem;
-  color: #1f2937;
-    @media (min-width: 768px) {
+  color: white;
+
+  @media (min-width: 768px) {
     font-size: 3rem;
   }
 }
@@ -133,22 +132,44 @@ nav li:not(:last-child)::after {
 .hero p {
   font-size: 1.125rem;
   color: #4b5563;
+
   @media (min-width: 768px) {
     font-size: 1.125rem;
   }
 }
 
-//end of hero section
+// Homepage Sections (Alternating)
 .section {
-  padding: 5rem 1rem;             /* Match inner horizontal padding */
-  max-width: 1200px;              /* Match container width */
-  margin: 0 auto;                 /* Center horizontally */
+  padding: 5rem 1rem;
+  width: 100%;
+  margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
   align-items: center;
+  color: #f3f4f6;
 }
 
+.section:nth-of-type(odd) {
+  background-color: #1f2937;
+}
+
+.section:nth-of-type(even) {
+  background-color: #334155;
+}
+
+.section h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #f3f4f6;
+  font-weight: 700;
+}
+
+.section p {
+  font-size: 1rem;
+  color: #d1d5db;
+  line-height: 1.6;
+}
 
 .section img {
   max-width: 100%;
@@ -160,41 +181,26 @@ nav li:not(:last-child)::after {
   flex: 1;
 }
 
-.section h2 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-  color: #1f2937;
+@media (max-width: 768px) {
+  .section {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .section-content {
+    width: 100%;
+  }
 }
 
-.section p {
-  font-size: 1rem;
-  color: #4b5563;
-}
-
-//end of hero section
-
-//html scroll
-html {
-  scroll-behavior:smooth;
-}
-//end of code
-
-// shareholder container style
-
+// Shareholders Section
 .shareholders-container {
   min-height: 100vh;
   padding: 4rem 1.25rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
-}
-// each card design
-.slick-slide > div {
-  margin: 0 0.75rem; /* ~12px spacing like Tailwind's mx-3 */
-}
-//each list inside
-.slick-list {
-  margin: 0 -0.75rem;
+  background-color: #0f172a;
+  color: #f3f4f6;
 }
 
 .shareholders-inner {
@@ -202,11 +208,7 @@ html {
   margin: 0 auto;
   padding: 0 1rem;
 }
-.slick-dots {
-  display: flex !important;
-  justify-content: center;
-  margin-top: 1rem;
-}
+
 .shareholders-header {
   display: flex;
   flex-direction: column;
@@ -221,7 +223,7 @@ html {
 }
 
 .shareholders-header h1 {
-  font-size: 2.25rem; /* Equivalent to Tailwind text-4xl */
+  font-size: 2.25rem;
   font-weight: 600;
   text-align: center;
 
@@ -233,7 +235,7 @@ html {
 .shareholders-header p {
   margin-top: 0.5rem;
   text-align: center;
-  color: #555;
+  color: #d1d5db;
 
   @media (min-width: 1024px) {
     text-align: left;
@@ -251,8 +253,8 @@ html {
 }
 
 .slider-controls button {
-  background-color: #d5f2ec;
-  color: #1f2937;
+  background-color: #2563eb;
+  color: #ffffff;
   padding: 0.5rem 1rem;
   border: none;
   border-radius: 0.5rem;
@@ -261,18 +263,32 @@ html {
 }
 
 .slider-controls button:active {
-  background-color: #ade9dc;
+  background-color: #1e40af;
+}
+
+.slick-slide > div {
+  margin: 0 0.75rem;
+}
+
+.slick-list {
+  margin: 0 -0.75rem;
+}
+
+.slick-dots {
+  display: flex !important;
+  justify-content: center;
+  margin-top: 1rem;
 }
 
 .shareholders-slider {
   margin-top: 1.25rem;
-  padding: 0; /* ← or keep small like 0 0.5rem if needed */
+  padding: 0;
 }
 
 .shareholder-card {
   height: 350px;
-  background-color: white;
-  color: black;
+  background-color: #ffffff;
+  color: #1f2937;
   border-radius: 0.75rem;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.24);
   margin-bottom: 0.5rem;
@@ -307,4 +323,63 @@ html {
   padding-top: 0.5rem;
   font-size: 1rem;
   color: #4b5563;
+}
+
+// Services Page
+.services-section {
+  min-height: 80vh;
+  padding: 4rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  color: white;
+  text-align: center;
+}
+
+.services-overlay {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 2rem;
+  border-radius: 1rem;
+  max-width: 800px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.services-section h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+
+  @media (min-width: 768px) {
+    font-size: 2.5rem;
+  }
+}
+
+.services-section p {
+  font-size: 1rem;
+  color: #f3f4f6;
+  line-height: 1.6;
+
+  @media (min-width: 768px) {
+    font-size: 1.125rem;
+  }
+}
+
+.bg-equipment {
+  background-image: url("");
+  background-color: #1f2937;
+}
+
+.bg-biomedical {
+  background-image: url("");
+  background-color: #334155;
+}
+
+.bg-project {
+  background-image: url("");
+  background-color: #0f172a;
 }
