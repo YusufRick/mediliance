@@ -13,8 +13,8 @@ html {
 // Navbar
 nav {
   background: #ffffff;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.5);
-  border-bottom: 2px solid #2563eb;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-bottom: 2px solid #4b1c24; // Deep maroon line
   position: fixed;
   width: 100%;
   top: 0;
@@ -43,7 +43,7 @@ nav a {
 }
 
 nav a:hover {
-  color: #2563eb;
+  color: #4b1c24;
 }
 
 nav a::after {
@@ -53,7 +53,7 @@ nav a::after {
   bottom: -4px;
   width: 0;
   height: 2px;
-  background-color: #2563eb;
+  background-color: #4b1c24;
   transition: width 0.3s ease;
 }
 
@@ -107,14 +107,13 @@ nav li:not(:last-child)::after {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #1f2937;
-  //background: url('/hero-bg.jpg') center/cover no-repeat;
+  background-color: #4b1c24;
   text-align: center;
-  color: white;
+  color: #ffffff;
 }
 
 .hero-content {
-  background-color: #1f2937;
+  background-color: #4b1c24;
   padding: 2rem;
   border-radius: 1rem;
 }
@@ -122,7 +121,7 @@ nav li:not(:last-child)::after {
 .hero h1 {
   font-size: 3rem;
   margin-bottom: 1rem;
-  color: white;
+  color: #ffffff;
 
   @media (min-width: 768px) {
     font-size: 3rem;
@@ -131,7 +130,7 @@ nav li:not(:last-child)::after {
 
 .hero p {
   font-size: 1.125rem;
-  color: #4b5563;
+  color: #ffffff;
 
   @media (min-width: 768px) {
     font-size: 1.125rem;
@@ -147,34 +146,35 @@ nav li:not(:last-child)::after {
   flex-wrap: wrap;
   gap: 2rem;
   align-items: center;
-  color: #f3f4f6;
+  transition: background-color 0.3s ease;
 }
 
 .section:nth-of-type(odd) {
-  background-color: #1f2937;
+  background-color: #4b1c24;
+  color: #ffffff;
 }
 
 .section:nth-of-type(even) {
-  background-color: #334155;
+  background-color: #ffffff;
+  color: #1f2937;
 }
 
 .section h2 {
   font-size: 2rem;
   margin-bottom: 1rem;
-  color: #f3f4f6;
   font-weight: 700;
 }
 
-.section p {
+.section p,
+.section li {
   font-size: 1rem;
-  color: #d1d5db;
   line-height: 1.6;
 }
 
 .section img {
   max-width: 100%;
   border-radius: 0.5rem;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .section-content {
@@ -196,11 +196,11 @@ nav li:not(:last-child)::after {
 .shareholders-container {
   min-height: 100vh;
   padding: 4rem 1.25rem;
+  background-color: #4b1c24;
+  color: #ffffff;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: #0f172a;
-  color: #f3f4f6;
 }
 
 .shareholders-inner {
@@ -235,7 +235,6 @@ nav li:not(:last-child)::after {
 .shareholders-header p {
   margin-top: 0.5rem;
   text-align: center;
-  color: #d1d5db;
 
   @media (min-width: 1024px) {
     text-align: left;
@@ -253,17 +252,17 @@ nav li:not(:last-child)::after {
 }
 
 .slider-controls button {
-  background-color: #2563eb;
+  background-color: #4b1c24;
   color: #ffffff;
   padding: 0.5rem 1rem;
-  border: none;
+  border: 1px solid white;
   border-radius: 0.5rem;
   cursor: pointer;
   transition: background-color 0.2s ease;
 }
 
 .slider-controls button:active {
-  background-color: #1e40af;
+  background-color: #3c161d;
 }
 
 .slick-slide > div {
@@ -325,6 +324,8 @@ nav li:not(:last-child)::after {
   color: #4b5563;
 }
 
+
+
 // Services Page
 .services-section {
   min-height: 80vh;
@@ -383,3 +384,90 @@ nav li:not(:last-child)::after {
   background-image: url("");
   background-color: #0f172a;
 }
+//end of code
+//counter circular
+
+/* Counter Section */
+.counter-section {
+  background-color: #4b1c24;
+  padding: 6rem 1rem;
+  text-align: center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.counter-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.counter-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 3rem;
+}
+
+.counter-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Adjust CounterCircle size */
+.counter-circle {
+  width: 220px;
+  height: 220px;
+  position: relative;
+}
+
+.counter-circle svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.counter-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.counter-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: white;
+}
+
+.counter-label {
+  font-size: 1rem;
+  margin-top: 0.25rem;
+  color: #e5e7eb;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 600px) {
+  .counter-title {
+    font-size: 2rem;
+  }
+
+  .counter-circle {
+    width: 180px;
+    height: 180px;
+  }
+
+  .counter-number {
+    font-size: 2rem;
+  }
+}
+
+
+
+//end of code
+

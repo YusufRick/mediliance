@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
 import Shareholders from '../components/ShareHolder';
+import CounterCircle from '../components/CounterCircular';
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 50 },
@@ -92,12 +93,33 @@ const HomePage = () => {
         </motion.div>
       </section>
 
-      {/* Dynamic Sections with Shareholders inserted before Contact */}
+      {/* Dynamic Sections with Shareholders and Project Stats inserted before Contact */}
       {sections.map((section) => {
         if (section.id === "contact") {
           return (
-            <React.Fragment key="shareholders-and-contact">
+            <React.Fragment key="shareholders-stats-contact">
               <Shareholders />
+
+             {/* ✅ Project Stats Section */}
+<motion.section
+  id="projects"
+  className="counter-section"
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true, amount: 0.2 }}
+  transition={{ duration: 0.7 }}
+  variants={fadeInUp}
+>
+  <div className="counter-inner">
+    <h2 className="counter-title">Our Achievements</h2>
+    <div className="counter-wrapper">
+      <CounterCircle value={126} duration={2000} label="Projects Completed" />
+    </div>
+  </div>
+</motion.section>
+
+
+              {/* Contact Section */}
               <motion.section
                 id={section.id}
                 ref={contactRef}
