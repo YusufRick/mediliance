@@ -31,7 +31,7 @@ export function Homepage({ onNavigate }) {
               facilities worldwide.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="sm:text-base text-sm px-4 sm:px-6" onClick={() => onNavigate('services')}>
+              <Button variant="outline" size="lg" className="sm:text-base text-sm px-4 sm:px-6" onClick={() => onNavigate('services')}>
                 Explore Services
                 <ChevronRight className="ml-2 h-4 w-4" />
               </Button>
