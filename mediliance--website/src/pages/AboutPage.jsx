@@ -133,15 +133,17 @@ export function AboutPage() {
                 Our Story
               </motion.h2>
               <motion.p className="text-lg text-muted-foreground mb-6" variants={fadeUp}>
-                Founded in 1998 by a team of healthcare professionals and biomedical engineers, 
-                Mediliance was born from a simple yet powerful idea: healthcare providers 
-                deserve comprehensive solutions that go beyond just equipment supply.
+                Formally incorporated in Malaysia on 19 June 1999 by Mohammad Riazzuddin Ali Ahmad, a graduate in Electronics 
+                and Mathematics from Southern Illinois University at Edwardsville, USA. 
+                With a strong network among Malaysia’s medical and healthcare opinion leaders, 
+                he envisioned a company that would bridge the gap between advanced medical 
+                technology and local healthcare needs.
               </motion.p>
               <motion.p className="text-lg text-muted-foreground mb-6" variants={fadeUp}>
                 What started as a regional medical equipment supplier has evolved into a 
                 full-service healthcare technology partner, offering equipment supply, 
                 biomedical engineering services, and complete project management solutions 
-                across 15 countries.
+                across Asia.
               </motion.p>
               <motion.p className="text-lg text-muted-foreground" variants={fadeUp}>
                 Today, we're proud to be an integral part of the healthcare ecosystem, 
@@ -191,7 +193,7 @@ export function AboutPage() {
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
               <motion.div variants={fadeUp}>
-                <div className="text-3xl font-bold text-primary mb-2">25+</div>
+                <div className="text-3xl font-bold text-primary mb-2">{new Date().getFullYear() - 1999}+</div>
                 <div className="text-muted-foreground">Years of Experience</div>
               </motion.div>
               <motion.div variants={fadeUp}>
