@@ -1,4 +1,4 @@
-import { Button } from '../components/ui/button';
+import { MotionButton as Button } from '../components/ui/MotionButton';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
 import { 
@@ -112,7 +112,7 @@ export function Homepage({ onNavigate }) {
               </motion.div>
 
               <motion.div variants={fadeUp}>
-                <Button className="sm:text-base text-sm px-4 sm:px-6" onClick={() => onNavigate('about')}>
+                <Button variant="outline" size="lg"className="sm:text-base text-sm px-4 sm:px-6" onClick={() => onNavigate('about')}>
                   Learn More About Us
                   <ChevronRight className="ml-2 h-4 w-4" />
                 </Button>
@@ -197,7 +197,7 @@ export function Homepage({ onNavigate }) {
           </div>
 
           <motion.div className="text-center mt-12" variants={fadeUp}>
-            <Button size="lg" className="sm:text-base text-sm px-4 sm:px-6" onClick={() => onNavigate('services')}>
+            <Button variant="outline" size="lg" className="sm:text-base text-sm px-4 sm:px-6" onClick={() => onNavigate('services')}>
               View All Services
               <ChevronRight className="ml-2 h-4 w-4" />
             </Button>
@@ -288,7 +288,7 @@ export function Homepage({ onNavigate }) {
               </motion.div>
 
               <motion.div variants={fadeUp}>
-                <Button className="sm:text-base text-sm px-4 sm:px-6" onClick={() => onNavigate('shareholders')}>
+                <Button variant="outline" size="lg"className="sm:text-base text-sm px-4 sm:px-6" onClick={() => onNavigate('shareholders')}>
                   View Investor Information
                   <ChevronRight className="ml-2 h-4 w-4" />
                 </Button>

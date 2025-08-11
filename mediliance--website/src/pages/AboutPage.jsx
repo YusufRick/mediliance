@@ -35,7 +35,6 @@ const imageReveal = {
   visible: { opacity: 1, scale: 1, transition: { duration: 0.7, ease } }
 };
 
-// Reusable hover/tap interaction for cards & rows
 const hoverable = {
   whileHover: { y: -4, scale: 1.02 },
   whileTap: { scale: 0.98 },
@@ -78,11 +77,9 @@ export function AboutPage() {
   return (
     <div className="min-h-screen py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Hero Section */}
-        <motion.div 
-          className="text-center mb-16"
-          initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.25 }} variants={stagger}
-        >
+        
+        {/* Hero */}
+        <motion.div className="text-center mb-16" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.25 }} variants={stagger}>
           <motion.h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6" variants={fadeUp}>
             About Mediliance
           </motion.h1>
@@ -94,10 +91,7 @@ export function AboutPage() {
         </motion.div>
 
         {/* Mission & Vision */}
-        <motion.div 
-          className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20"
-          initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={stagger}
-        >
+        <motion.div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={stagger}>
           <motion.div variants={fadeUp} {...hoverable}>
             <Card className="p-8">
               <CardHeader className="pb-4">
@@ -132,10 +126,7 @@ export function AboutPage() {
         </motion.div>
 
         {/* Company Story */}
-        <motion.section 
-          className="mb-20"
-          initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={stagger}
-        >
+        <motion.section className="mb-20" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={stagger}>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <motion.h2 className="text-3xl font-bold text-foreground mb-6" variants={fadeUp}>
@@ -169,10 +160,7 @@ export function AboutPage() {
         </motion.section>
 
         {/* Core Values */}
-        <motion.section 
-          className="mb-20"
-          initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={stagger}
-        >
+        <motion.section className="mb-20" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={stagger}>
           <div className="text-center mb-12">
             <motion.h2 className="text-3xl font-bold text-foreground mb-4" variants={fadeUp}>
               Our Core Values
@@ -196,10 +184,7 @@ export function AboutPage() {
         </motion.section>
 
         {/* Key Statistics */}
-        <motion.section 
-          className="mb-20"
-          initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={stagger}
-        >
+        <motion.section className="mb-20" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={stagger}>
           <motion.div className="bg-muted/30 rounded-lg p-8" variants={fadeUp}>
             <h2 className="text-3xl font-bold text-foreground text-center mb-12">
               Mediliance by the Numbers
@@ -221,11 +206,8 @@ export function AboutPage() {
           </motion.div>
         </motion.section>
 
-        {/* Company Timeline (Our Journey) */}
-        <motion.section 
-          className="mb-20"
-          initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={stagger}
-        >
+        {/* Our Journey */}
+        <motion.section className="mb-20" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={stagger}>
           <div className="text-center mb-12">
             <motion.h2 className="text-3xl font-bold text-foreground mb-4" variants={fadeUp}>
               Our Journey
@@ -237,13 +219,7 @@ export function AboutPage() {
           </div>
           <div className="space-y-8">
             {milestones.map((milestone, index) => (
-              <motion.div 
-                key={index} 
-                className="flex items-start space-x-4"
-                variants={fadeUp}
-                whileHover={{ x: 4 }}
-                transition={{ type: 'spring', stiffness: 260, damping: 22 }}
-              >
+              <motion.div key={index} className="flex items-start space-x-4" variants={fadeUp} whileHover={{ x: 4 }} transition={{ type: 'spring', stiffness: 260, damping: 22 }}>
                 <div className="flex-shrink-0">
                   <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center">
                     <CheckCircle className="h-6 w-6 text-primary-foreground" />
@@ -260,51 +236,65 @@ export function AboutPage() {
           </div>
         </motion.section>
 
-        {/* Certifications */}
-        <motion.section
-          initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={stagger}
-        >
+        {/* Certifications & Compliance (Malaysia) */}
+        <motion.section initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={stagger}>
           <div className="text-center mb-12">
             <motion.h2 className="text-3xl font-bold text-foreground mb-4" variants={fadeUp}>
               Certifications &amp; Compliance
             </motion.h2>
             <motion.p className="text-lg text-muted-foreground max-w-2xl mx-auto" variants={fadeUp}>
-              We maintain the highest industry standards and certifications to ensure 
-              quality and compliance across all our services.
+              We comply with Malaysia’s medical device regulations and hold key credentials required for distribution, contracting, and public sector procurement.
             </motion.p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <motion.div variants={fadeUp} {...hoverable}>
-              <Card className="text-center p-6">
-                <Award className="h-16 w-16 text-primary mx-auto mb-4" />
-                <h3 className="font-semibold mb-2">ISO 13485 Certified</h3>
-                <p className="text-muted-foreground text-sm">
-                  Quality management systems for medical devices and services
-                </p>
-              </Card>
-            </motion.div>
-
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
             <motion.div variants={fadeUp} {...hoverable}>
               <Card className="text-center p-6">
                 <Shield className="h-16 w-16 text-primary mx-auto mb-4" />
-                <h3 className="font-semibold mb-2">FDA Registered</h3>
+                <h3 className="font-semibold mb-2">GDPMD Certified</h3>
                 <p className="text-muted-foreground text-sm">
-                  Registered facility with the Food and Drug Administration
+                  Good Distribution Practice for Medical Devices (Malaysia)
                 </p>
               </Card>
             </motion.div>
-
+            <motion.div variants={fadeUp} {...hoverable}>
+              <Card className="text-center p-6">
+                <CheckCircle className="h-16 w-16 text-primary mx-auto mb-4" />
+                <h3 className="font-semibold mb-2">MDA Registered</h3>
+                <p className="text-muted-foreground text-sm">
+                  Medical Device Authority compliance under Act 737
+                </p>
+              </Card>
+            </motion.div>
+            <motion.div variants={fadeUp} {...hoverable}>
+              <Card className="text-center p-6">
+                <Award className="h-16 w-16 text-primary mx-auto mb-4" />
+                <h3 className="font-semibold mb-2">CIDB Certified</h3>
+                <p className="text-muted-foreground text-sm">
+                  Certified contractor for healthcare infrastructure works
+                </p>
+              </Card>
+            </motion.div>
             <motion.div variants={fadeUp} {...hoverable}>
               <Card className="text-center p-6">
                 <Users className="h-16 w-16 text-primary mx-auto mb-4" />
-                <h3 className="font-semibold mb-2">HIPAA Compliant</h3>
+                <h3 className="font-semibold mb-2">MOF Registered</h3>
                 <p className="text-muted-foreground text-sm">
-                  Full compliance with healthcare privacy regulations
+                  Ministry of Finance supplier for public sector procurement
+                </p>
+              </Card>
+            </motion.div>
+            <motion.div variants={fadeUp} {...hoverable}>
+              <Card className="text-center p-6">
+                <Globe className="h-16 w-16 text-primary mx-auto mb-4" />
+                <h3 className="font-semibold mb-2">Bumiputera Status</h3>
+                <p className="text-muted-foreground text-sm">
+                  Recognized Bumiputera company supporting national initiatives
                 </p>
               </Card>
             </motion.div>
           </div>
         </motion.section>
+
       </div>
     </div>
   );
