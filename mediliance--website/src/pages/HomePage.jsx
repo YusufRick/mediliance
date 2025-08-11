@@ -231,5 +231,5 @@ export function Homepage({ onNavigate }) {
         </div>
       </section>
     </div>
-  );
+   );
 }
