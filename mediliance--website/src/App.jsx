@@ -34,6 +34,10 @@ export default function App() {
   return (
     <div className="min-h-screen bg-background">
       <Header currentPage={currentPage} onNavigate={handleNavigate} />
+
+      <div className="bg-red-500 text-white text-3xl p-6 font-bold">
+  If this is styled, Tailwind works
+</div>
       <main className="flex-1">
         {renderPage()}
       </main>
