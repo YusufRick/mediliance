@@ -138,15 +138,15 @@ export function ShareholdersPage() {
     {
       name: "Mohammad Riazzuddin Ali Ahmad",
       percentage: "28.7%",
-      type: "Executive Director",
+      type: "Chief Executive Officer and Director",
       description: "International medical equipment and services conglomerate",
       image: "https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=400&h=300&fit=crop",
       details: "A graduate in Electronics and Mathematics from Southern Illinois University at Edwardsville USA. He has an excellent relationship with opinion leaders of medical and healthcare in Malaysia"
     },
     {
-      name: "Founders & Management",
+      name: "Noreha Binti Hassan",
       percentage: "15.6%",
-      type: "Management Ownership",
+      type: "Director",
       description: "Company founders and senior management team",
       image: "https://images.unsplash.com/photo-1560472355-536de3962603?w=400&h=300&fit=crop",
       details: "Strong management ownership ensures alignment between leadership decisions and long-term shareholder value creation, maintaining our commitment to operational excellence."

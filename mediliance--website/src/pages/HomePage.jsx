@@ -10,7 +10,8 @@ import {
   Wrench, 
   Building2,
   TrendingUp,
-  ChevronRight
+  ChevronRight,
+  CheckCircle
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -94,22 +95,23 @@ export function Homepage({ onNavigate }) {
 
               <motion.div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8" variants={stagger}>
                 <motion.div className="flex items-center" variants={fadeUp}>
-                  <Heart className="h-5 w-5 text-primary mr-3" />
-                  <span>Patient-Centered Focus</span>
+                    <Heart className="h-5 w-5 text-primary mr-3" />
+                    <span>Patient-Centered Focus</span>
                 </motion.div>
                 <motion.div className="flex items-center" variants={fadeUp}>
-                  <Shield className="h-5 w-5 text-primary mr-3" />
-                  <span>FDA Approved Equipment</span>
+                    <Shield className="h-5 w-5 text-primary mr-3" />
+                    <span>GDPMP Certified</span>
                 </motion.div>
                 <motion.div className="flex items-center" variants={fadeUp}>
-                  <Award className="h-5 w-5 text-primary mr-3" />
-                  <span>ISO 13485 Certified</span>
+                    <Users className="h-5 w-5 text-primary mr-3" />
+                    <span>Registered with MOF, CIDB & MDA</span>
                 </motion.div>
                 <motion.div className="flex items-center" variants={fadeUp}>
-                  <Users className="h-5 w-5 text-primary mr-3" />
-                  <span>24/7 Technical Support</span>
+                    <CheckCircle className="h-5 w-5 text-primary mr-3" />
+                    <span>Bumiputera Status</span>
                 </motion.div>
-              </motion.div>
+                </motion.div>
+
 
               <motion.div variants={fadeUp}>
                 <Button variant="outline" size="lg"className="sm:text-base text-sm px-4 sm:px-6" onClick={() => onNavigate('about')}>
@@ -276,13 +278,13 @@ export function Homepage({ onNavigate }) {
                 <motion.div className="bg-background p-4 rounded-lg" variants={fadeUp}>
                   <TrendingUp className="h-8 w-8 text-primary mb-2" />
                   <p className="font-semibold">Revenue Growth</p>
-                  <p className="text-2xl font-bold text-primary">+23%</p>
+                  <p className="text-2xl font-bold text-primary">+15%</p>
                   <p className="text-sm text-muted-foreground">Year over year</p>
                 </motion.div>
                 <motion.div className="bg-background p-4 rounded-lg" variants={fadeUp}>
                   <Building2 className="h-8 w-8 text-primary mb-2" />
                   <p className="font-semibold">Market Presence</p>
-                  <p className="text-2xl font-bold text-primary">15</p>
+                  <p className="text-2xl font-bold text-primary">5</p>
                   <p className="text-sm text-muted-foreground">Countries served</p>
                 </motion.div>
               </motion.div>
