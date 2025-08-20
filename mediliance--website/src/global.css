@@ -1,7 +1,4 @@
 @import "tailwindcss";
-@import "tailwindcss/preflight"; /* replaces @tailwind base */
-@import "tailwindcss/utilities"; /* replaces @tailwind utilities */
-
 
 :root {
   --font-size: 14px;
