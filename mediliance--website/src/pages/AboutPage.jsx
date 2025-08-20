@@ -197,46 +197,15 @@ export function AboutPage() {
                 <div className="text-muted-foreground">Years of Experience</div>
               </motion.div>
               <motion.div variants={fadeUp}>
-                <div className="text-3xl font-bold text-primary mb-2">500+</div>
+                <div className="text-3xl font-bold text-primary mb-2">50+</div>
                 <div className="text-muted-foreground">Healthcare Partners</div>
               </motion.div>
-              <motion.div variants={fadeUp}>
-                <div className="text-3xl font-bold text-primary mb-2">15</div>
-                <div className="text-muted-foreground">Countries Served</div>
-              </motion.div>
+              
             </div>
           </motion.div>
         </motion.section>
 
-        {/* Our Journey */}
-        <motion.section className="mb-20" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={stagger}>
-          <div className="text-center mb-12">
-            <motion.h2 className="text-3xl font-bold text-foreground mb-4" variants={fadeUp}>
-              Our Journey
-            </motion.h2>
-            <motion.p className="text-lg text-muted-foreground max-w-2xl mx-auto" variants={fadeUp}>
-              Key milestones that have shaped Mediliance into the comprehensive 
-              healthcare solutions provider we are today.
-            </motion.p>
-          </div>
-          <div className="space-y-8">
-            {milestones.map((milestone, index) => (
-              <motion.div key={index} className="flex items-start space-x-4" variants={fadeUp} whileHover={{ x: 4 }} transition={{ type: 'spring', stiffness: 260, damping: 22 }}>
-                <div className="flex-shrink-0">
-                  <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center">
-                    <CheckCircle className="h-6 w-6 text-primary-foreground" />
-                  </div>
-                </div>
-                <div className="flex-grow">
-                  <div className="flex items-center space-x-4 mb-2">
-                    <span className="text-lg font-semibold text-primary">{milestone.year}</span>
-                  </div>
-                  <p className="text-muted-foreground">{milestone.event}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.section>
+
 
         {/* Certifications & Compliance (Malaysia) */}
         <motion.section initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={stagger}>

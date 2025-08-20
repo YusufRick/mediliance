@@ -1,3 +1,4 @@
+import React, { useEffect, useRef, useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
 import { 
@@ -10,7 +11,7 @@ import {
   Heart,
   Clock
 } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { motion, animate, useInView } from 'framer-motion';
 
 const ease = [0.22, 1, 0.36, 1];
 
@@ -31,7 +32,7 @@ const stagger = {
 
 const imageReveal = {
   hidden: { opacity: 0, scale: 0.96 },
-  visible: { opacity: 1, scale: 1, transition: { duration: 0.7, ease } },
+  visible: { opacity: 1, scale: 1, transition: { duration: 1.0, ease } },
 };
 
 const hoverable = {
@@ -39,6 +40,35 @@ const hoverable = {
   whileTap: { scale: 0.98 },
   transition: { type: 'spring', stiffness: 320, damping: 24 },
 };
+
+/** Animated number counter (state-driven, safe to render) */
+function MotionCounter({ to = '0', duration = 3, className = '' }) {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: '-80px' });
+
+  const str = String(to);
+  const numeric = Number(str.replace(/[^\d]/g, '')); // 98 from "98%"
+  const suffix = str.replace(/[\d,\s]/g, '');        // "%" or "+"
+
+  const [display, setDisplay] = useState(0);
+
+  useEffect(() => {
+    if (!inView) return;
+    const controls = animate(0, numeric, {
+      duration,
+      ease,
+      onUpdate: (v) => setDisplay(Math.round(v)),
+    });
+    return () => controls.stop();
+  }, [inView, numeric, duration]);
+
+  return (
+    <span ref={ref} className={className}>
+      {display.toLocaleString()}
+      {suffix}
+    </span>
+  );
+}
 
 export function ClientsPage() {
   const testimonials = [
@@ -108,10 +138,8 @@ export function ClientsPage() {
   ];
 
   const clientStats = [
-    { icon: Building, number: "500+", label: "Healthcare Facilities", description: "From small clinics to major medical centers" },
-    { icon: Users, number: "50,000+", label: "Healthcare Professionals", description: "Trust our equipment and services daily" },
-    { icon: TrendingUp, number: "98%", label: "Client Retention Rate", description: "Long-term partnerships built on trust" },
-    { icon: Award, number: "15", label: "Countries Served", description: "Global reach with local support" }
+    { icon: Building, number: "50+", label: "Healthcare Facilities", description: "From small clinics to major medical centers" },
+    { icon: TrendingUp, number: "98%", label: "Client Retention Rate", description: "Long-term partnerships built on trust" }
   ];
 
   const clientTypes = [
@@ -128,10 +156,10 @@ export function ClientsPage() {
       icon: Heart
     },
     {
-      type: "Emergency Services",
-      description: "Critical care providers requiring immediate equipment support and maintenance",
-      examples: ["City Emergency Services", "Trauma Response Centers", "Rural EMS Stations"],
-      icon: Clock
+      type: "GP Clinics",
+      description: "Primary care practices with versatile diagnostic and treatment needs",
+      examples: ["Family Care Clinics", "Community Health Practices", "Private GP Groups"],
+      icon: Users
     }
   ];
 
@@ -142,7 +170,10 @@ export function ClientsPage() {
         {/* Hero Section */}
         <motion.div
           className="text-center mb-16"
-          initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.25 }} variants={stagger}
+          initial="hidden" 
+          whileInView="visible" 
+          viewport={{ once: true, amount: 0.25 }} 
+          variants={stagger}
         >
           <motion.h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6" variants={fadeUp}>
             Our Clients
@@ -154,20 +185,34 @@ export function ClientsPage() {
           </motion.p>
         </motion.div>
 
-        {/* Client Statistics */}
+        {/* Client Statistics (centered with animated counters) */}
         <motion.section
           className="mb-20"
-          initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={stagger}
+          initial="hidden" 
+          whileInView="visible" 
+          viewport={{ once: true, amount: 0.2 }} 
+          variants={stagger}
         >
-          <motion.div className="bg-muted/30 rounded-lg p-8" variants={fadeUp}>
-            <h2 className="text-3xl font-bold text-foreground text-center mb-12">
+          <motion.div 
+            className="bg-muted/30 rounded-lg p-8 md:p-10 flex flex-col items-center text-center"
+            variants={fadeUp}
+          >
+            <h2 className="text-3xl font-bold text-foreground mb-10">
               Trusted by Healthcare Leaders
             </h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+
+            <div className="w-full max-w-4xl grid grid-cols-1 sm:grid-cols-2 gap-8">
               {clientStats.map((stat, index) => (
-                <motion.div key={index} variants={fadeUp} {...hoverable}>
-                  <stat.icon className="h-12 w-12 text-primary mx-auto mb-4" />
-                  <div className="text-3xl font-bold text-primary mb-2">{stat.number}</div>
+                <motion.div 
+                  key={index} 
+                  className="flex flex-col items-center text-center"
+                  variants={fadeUp} 
+                  {...hoverable}
+                >
+                  <stat.icon className="h-12 w-12 text-primary mb-4" />
+                  <div className="text-3xl font-bold text-primary mb-2">
+                    <MotionCounter to={stat.number} />
+                  </div>
                   <div className="font-semibold mb-1">{stat.label}</div>
                   <div className="text-muted-foreground text-sm">{stat.description}</div>
                 </motion.div>
@@ -225,82 +270,12 @@ export function ClientsPage() {
         </motion.section>
         */}
 
-        {/* Case Studies */}
-        <motion.section
-          className="mb-20"
-          initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={stagger}
-        >
-          <div className="text-center mb-12">
-            <motion.h2 className="text-3xl font-bold text-foreground mb-4" variants={fadeUp}>
-              Success Stories
-            </motion.h2>
-            <motion.p className="text-lg text-muted-foreground max-w-2xl mx-auto" variants={fadeUp}>
-              Real-world examples of how we've helped healthcare organizations 
-              improve their operations and patient outcomes through our comprehensive services.
-            </motion.p>
-          </div>
-
-          <div className="space-y-16">
-            {caseStudies.map((study, index) => (
-              <motion.div
-                key={index}
-                className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''}`}
-                variants={stagger}
-              >
-                <div className={index % 2 === 1 ? 'lg:col-start-2' : ''}>
-                  <motion.h3 className="text-2xl font-bold text-foreground mb-4" variants={fadeUp}>
-                    {study.title}
-                  </motion.h3>
-                  <motion.p className="text-primary font-semibold mb-4" variants={fadeUp}>
-                    {study.client}
-                  </motion.p>
-
-                  <motion.div className="mb-6" variants={fadeUp}>
-                    <h4 className="font-semibold mb-2">Challenge:</h4>
-                    <p className="text-muted-foreground">{study.challenge}</p>
-                  </motion.div>
-
-                  <motion.div className="mb-6" variants={fadeUp}>
-                    <h4 className="font-semibold mb-2">Solution:</h4>
-                    <p className="text-muted-foreground">{study.solution}</p>
-                  </motion.div>
-
-                  <motion.div variants={stagger}>
-                    <h4 className="font-semibold mb-3">Results:</h4>
-                    <ul className="space-y-2">
-                      {study.results.map((result, resultIndex) => (
-                        <motion.li
-                          key={resultIndex}
-                          className="flex items-start"
-                          variants={fadeUp}
-                        >
-                          <TrendingUp className="h-5 w-5 text-primary mr-3 flex-shrink-0 mt-0.5" />
-                          <span className="text-muted-foreground">{result}</span>
-                        </motion.li>
-                      ))}
-                    </ul>
-                  </motion.div>
-                </div>
-
-                <motion.div
-                  className={index % 2 === 1 ? 'lg:col-start-1 lg:row-start-1' : ''}
-                  variants={imageReveal}
-                  {...hoverable}
-                >
-                  <ImageWithFallback
-                    src={study.image}
-                    alt={study.title}
-                    className="rounded-lg shadow-lg w-full h-80 object-cover"
-                  />
-                </motion.div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.section>
-
         {/* Client Types */}
         <motion.section
-          initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={stagger}
+          initial="hidden" 
+          whileInView="visible" 
+          viewport={{ once: true, amount: 0.2 }} 
+          variants={stagger}
         >
           <div className="text-center mb-12">
             <motion.h2 className="text-3xl font-bold text-foreground mb-4" variants={fadeUp}>
@@ -321,14 +296,7 @@ export function ClientsPage() {
                   </CardHeader>
                   <CardContent>
                     <p className="text-muted-foreground mb-4">{type.description}</p>
-                    <div>
-                      <h4 className="font-semibold mb-2 text-sm">Example Clients:</h4>
-                      <ul className="text-muted-foreground text-sm space-y-1">
-                        {type.examples.map((example, exampleIndex) => (
-                          <li key={exampleIndex}>• {example}</li>
-                        ))}
-                      </ul>
-                    </div>
+                    
                   </CardContent>
                 </Card>
               </motion.div>

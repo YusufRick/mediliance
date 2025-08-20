@@ -218,23 +218,16 @@ export function ServicesPage() {
             </Card>
             <Card className="p-6 text-center hover:shadow-lg transition-shadow">
               <GraduationCap className="h-12 w-12 text-primary mx-auto mb-4" />
-              <h3 className="font-semibold mb-2">Clinics</h3>
+              <h3 className="font-semibold mb-2"> Specialty Clinics</h3>
               <p className="text-muted-foreground text-sm">
                 Scalable equipment and service solutions for outpatient facilities
               </p>
             </Card>
             <Card className="p-6 text-center hover:shadow-lg transition-shadow">
               <Stethoscope className="h-12 w-12 text-primary mx-auto mb-4" />
-              <h3 className="font-semibold mb-2">Surgical Centers</h3>
+              <h3 className="font-semibold mb-2">GP Clinics</h3>
               <p className="text-muted-foreground text-sm">
                 Specialized equipment and engineering support for surgical procedures
-              </p>
-            </Card>
-            <Card className="p-6 text-center hover:shadow-lg transition-shadow">
-              <Clock className="h-12 w-12 text-primary mx-auto mb-4" />
-              <h3 className="font-semibold mb-2">Emergency Services</h3>
-              <p className="text-muted-foreground text-sm">
-                Critical equipment and rapid response support for emergency care
               </p>
             </Card>
             <Card className="p-6 text-center hover:shadow-lg transition-shadow">

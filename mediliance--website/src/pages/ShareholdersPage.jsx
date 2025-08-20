@@ -50,9 +50,7 @@ export function ShareholdersPage() {
   const [direction, setDirection] = useState(1); // 1 for next/right, -1 for prev/left
 
   const keyMetrics = [
-    { metric: "Market Presence", value: "15 Countries", description: "Global reach across key healthcare markets" },
-    { metric: "Client Base", value: "500+ Facilities", description: "Diverse healthcare organizations served" },
-    { metric: "Employee Count", value: "2,800+", description: "Dedicated professionals worldwide" },
+    { metric: "Client Base", value: "50+ Facilities", description: "Diverse healthcare organizations served" },
     { metric: "Service Offerings", value: "3 Core Services", description: "Equipment, Engineering, and Project Management" }
   ];
 
@@ -129,35 +127,24 @@ export function ShareholdersPage() {
   const shareholders = [
     {
       name: "Mohammad Faqrullah Mohammad Riazzuddin",
-      percentage: "34.2%",
-      type: "Director",
+      position: "Director",
       description: "Leading healthcare investment firm focused on medical technology companies",
       image: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&h=300&fit=crop",
       details: "A graduate from UNITEN. Good experience in both sales and project management and technical aspect of engineering"
     },
     {
       name: "Mohammad Riazzuddin Ali Ahmad",
-      percentage: "28.7%",
-      type: "Chief Executive Officer and Director",
+      position: "Chief Executive Officer and Director",
       description: "International medical equipment and services conglomerate",
       image: "https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=400&h=300&fit=crop",
       details: "A graduate in Electronics and Mathematics from Southern Illinois University at Edwardsville USA. He has an excellent relationship with opinion leaders of medical and healthcare in Malaysia"
     },
     {
       name: "Noreha Binti Hassan",
-      percentage: "15.6%",
-      type: "Director",
+      position: "Director",
       description: "Company founders and senior management team",
       image: "https://images.unsplash.com/photo-1560472355-536de3962603?w=400&h=300&fit=crop",
       details: "Strong management ownership ensures alignment between leadership decisions and long-term shareholder value creation, maintaining our commitment to operational excellence."
-    },
-    {
-      name: "Public Shareholders",
-      percentage: "21.5%",
-      type: "Public Investment",
-      description: "Individual and institutional public market investors",
-      image: "https://images.unsplash.com/photo-1551836022-4c4c79ecde51?w=400&h=300&fit=crop",
-      details: "Our public shareholders benefit from transparent reporting and consistent dividend policy, with strong liquidity and growth potential in the expanding healthcare sector."
     }
   ];
 
@@ -180,7 +167,7 @@ export function ShareholdersPage() {
   };
 
   // Variants for the slideshow (directional slide)
- const slideVariants = {
+  const slideVariants = {
     enter: (dir) => ({ x: dir > 0 ? 40 : -40, opacity: 0 }),
     center: { x: 0, opacity: 1, transition: { duration: 0.45, ease } },
     exit: (dir) => ({ x: dir > 0 ? -40 : 40, opacity: 0, transition: { duration: 0.35, ease } })
@@ -246,31 +233,42 @@ export function ShareholdersPage() {
 
         {/* Key Metrics */}
         <motion.section
-          className="mb-20"
-          initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={stagger}
+        className="mb-20"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        variants={stagger}
         >
-          <motion.div className="bg-muted/30 rounded-lg p-8" variants={fadeUp}>
-            <h2 className="text-3xl font-bold text-foreground text-center mb-12">
-              Key Business Metrics
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {keyMetrics.map((metric, index) => (
-                <motion.div key={index} variants={fadeUp}>
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-primary mb-2">{metric.value}</div>
-                    <div className="font-semibold mb-2">{metric.metric}</div>
-                    <div className="text-muted-foreground text-sm">{metric.description}</div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        </motion.section>
+  <motion.div
+    className="bg-muted/30 rounded-lg p-8 md:p-10 flex flex-col items-center text-center"
+    variants={fadeUp}
+  >
+    <h2 className="text-3xl font-bold text-foreground mb-12">
+      Key Business Metrics
+    </h2>
 
-        {/* Shareholders Slideshow */}
+    <div className="w-full max-w-4xl grid grid-cols-1 sm:grid-cols-2 gap-8 justify-items-center">
+      {keyMetrics.map((metric, index) => (
+        <motion.div key={index} variants={fadeUp}>
+          <div className="text-center">
+            <div className="text-2xl font-bold text-primary mb-2">{metric.value}</div>
+            <div className="font-semibold mb-2">{metric.metric}</div>
+            <div className="text-muted-foreground text-sm">{metric.description}</div>
+          </div>
+        </motion.div>
+      ))}
+    </div>
+  </motion.div>
+</motion.section>
+
+
+        {/* Shareholders Slideshow (UPDATED LAYOUT) */}
         <motion.section
           className="mb-20"
-          initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={stagger}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={stagger}
         >
           <div className="text-center mb-12">
             <motion.h2 className="text-3xl font-bold text-foreground mb-4" variants={fadeUp}>
@@ -295,6 +293,7 @@ export function ShareholdersPage() {
                     animate="center"
                     exit="exit"
                   >
+                    {/* Image */}
                     <motion.div className="flex flex-col" variants={imageReveal} {...hoverable}>
                       <ImageWithFallback
                         src={shareholders[currentShareholder].image}
@@ -303,24 +302,48 @@ export function ShareholdersPage() {
                       />
                     </motion.div>
 
+                    {/* Text Content — Name → Position → Description → Details */}
                     <motion.div className="flex flex-col justify-center" variants={stagger}>
-                      <motion.div className="mb-4" variants={fadeUp}>
-                        <div className="text-3xl font-bold text-primary mb-2">
-                          {shareholders[currentShareholder].percentage}
-                        </div>
-                        <div className="text-sm text-muted-foreground mb-1">
-                          {shareholders[currentShareholder].type}
-                        </div>
-                      </motion.div>
-                      <motion.h3 className="text-2xl font-bold text-foreground mb-4" variants={fadeUp}>
+                      {/* Name */}
+                      <motion.h3
+                        className="text-2xl md:text-3xl font-bold text-foreground"
+                        variants={fadeUp}
+                      >
                         {shareholders[currentShareholder].name}
                       </motion.h3>
-                      <motion.p className="text-lg text-muted-foreground mb-4" variants={fadeUp}>
-                        {shareholders[currentShareholder].description}
-                      </motion.p>
-                      <motion.p className="text-muted-foreground" variants={fadeUp}>
-                        {shareholders[currentShareholder].details}
-                      </motion.p>
+
+                      {/* Position / Role */}
+                      {shareholders[currentShareholder].position && (
+                        <motion.div
+                          className="text-sm md:text-base text-muted-foreground mt-2"
+                          variants={fadeUp}
+                        >
+                          {shareholders[currentShareholder].position}
+                        </motion.div>
+                      )}
+
+                      {/* Divider */}
+                      <motion.div className="h-px bg-border my-5" variants={fadeUp} />
+
+                      {/* Description */}
+                      {shareholders[currentShareholder].description && (
+                        <motion.p
+                          className="text-base md:text-lg text-muted-foreground mb-4 leading-relaxed"
+                          variants={fadeUp}
+                        >
+                          {shareholders[currentShareholder].description}
+                        </motion.p>
+                      )}
+
+                      {/* Details */}
+                      {shareholders[currentShareholder].details && (
+                        <motion.p
+                          className="text-muted-foreground leading-relaxed"
+                          variants={fadeUp}
+                        >
+                          {shareholders[currentShareholder].details}
+                        </motion.p>
+                      )}
                     </motion.div>
                   </motion.div>
                 </AnimatePresence>
@@ -368,47 +391,6 @@ export function ShareholdersPage() {
           </div>
         </motion.section>
 
-        {/* Financial Reports */}
-        <motion.section
-          initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={stagger}
-        >
-          <div className="text-center mb-12">
-            <motion.h2 className="text-3xl font-bold text-foreground mb-4" variants={fadeUp}>
-              Financial Reports &amp; Documents
-            </motion.h2>
-            <motion.p className="text-lg text-muted-foreground max-w-2xl mx-auto" variants={fadeUp}>
-              Access our latest financial reports, SEC filings, and investor materials.
-            </motion.p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {reports.map((report, index) => (
-              <motion.div key={index} variants={fadeUp} {...hoverable}>
-                <Card className="p-6 hover:shadow-lg transition-shadow">
-                  <CardHeader className="pb-4">
-                    <div className="flex items-start justify-between">
-                      <div className="flex-1 min-w-0">
-                        <CardTitle className="text-lg mb-2">{report.title}</CardTitle>
-                        <p className="text-muted-foreground text-sm">{report.description}</p>
-                      </div>
-                      <FileText className="h-8 w-8 text-primary flex-shrink-0 ml-4" />
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="flex items-center justify-between">
-                      <div className="text-sm text-muted-foreground">
-                        {report.date} • {report.type}
-                      </div>
-                      <Button variant="outline" size="sm" className="sm:text-base text-sm px-2 sm:px-3">
-                        <Download className="h-4 w-4 mr-2" />
-                        Download
-                      </Button>
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </motion.section>
 
       </div>
     </div>

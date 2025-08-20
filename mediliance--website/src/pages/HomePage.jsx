@@ -229,20 +229,17 @@ export function Homepage({ onNavigate }) {
           <motion.div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center opacity-60" variants={stagger}>
             <motion.div className="text-center" variants={fadeUp}>
               <Building2 className="h-16 w-16 mx-auto mb-2 text-muted-foreground" />
-              <p className="font-semibold">Metro General Hospital</p>
+              <p className="font-semibold">Ministry of Health</p>
             </motion.div>
             <motion.div className="text-center" variants={fadeUp}>
               <Building2 className="h-16 w-16 mx-auto mb-2 text-muted-foreground" />
-              <p className="font-semibold">Regional Medical Center</p>
+              <p className="font-semibold">Private Hospital</p>
             </motion.div>
             <motion.div className="text-center" variants={fadeUp}>
               <Building2 className="h-16 w-16 mx-auto mb-2 text-muted-foreground" />
               <p className="font-semibold">University Hospital</p>
             </motion.div>
-            <motion.div className="text-center" variants={fadeUp}>
-              <Building2 className="h-16 w-16 mx-auto mb-2 text-muted-foreground" />
-              <p className="font-semibold">Specialty Care Center</p>
-            </motion.div>
+            
           </motion.div>
 
           <motion.div className="text-center mt-12" variants={fadeUp}>
@@ -280,12 +277,6 @@ export function Homepage({ onNavigate }) {
                   <p className="font-semibold">Revenue Growth</p>
                   <p className="text-2xl font-bold text-primary">+15%</p>
                   <p className="text-sm text-muted-foreground">Year over year</p>
-                </motion.div>
-                <motion.div className="bg-background p-4 rounded-lg" variants={fadeUp}>
-                  <Building2 className="h-8 w-8 text-primary mb-2" />
-                  <p className="font-semibold">Market Presence</p>
-                  <p className="text-2xl font-bold text-primary">5</p>
-                  <p className="text-sm text-muted-foreground">Countries served</p>
                 </motion.div>
               </motion.div>
 
