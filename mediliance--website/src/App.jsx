@@ -34,6 +34,7 @@ export default function App() {
   return (
     <div className="min-h-screen bg-background">
       <Header currentPage={currentPage} onNavigate={handleNavigate} />
+
       <main className="flex-1">
         {renderPage()}
       </main>

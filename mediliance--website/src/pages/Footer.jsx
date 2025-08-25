@@ -2,67 +2,55 @@ export function Footer() {
   return (
     <footer className="bg-muted/30 border-t border-border mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+          
           {/* Company Info */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-foreground">Mediliance</h3>
-            <p className="text-muted-foreground text-sm">
+            <h3 className="text-xl font-semibold text-foreground">
+              Mediliance (M) Sdn. Bhd.
+            </h3>
+            {/* <p className="text-muted-foreground text-sm leading-relaxed">
               Leading provider of comprehensive medical equipment solutions, 
-              biomedical engineering services, and hospital project management.
-            </p>
+              biomedical engineering services, and hospital project management in Malaysia and beyond.
+            </p> */}
+            <address className="not-italic text-sm text-muted-foreground leading-relaxed">
+              No. 11-2, SRI MANJA SQUARE II,<br />
+              JALAN PJS 3/59, TAMAN SRI MANJA,<br />
+              46000 PETALING JAYA,<br />
+              Selangor Darul Ehsan, Malaysia.
+            </address>
           </div>
 
-          {/* Services */}
+          {/* Contact Info */}
           <div className="space-y-4">
-            <h4 className="font-semibold text-foreground">Services</h4>
+            <h4 className="text-lg font-semibold text-foreground">Contact</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
-              <li>Medical Equipment Supply</li>
-              <li>Biomedical Engineering</li>
-              <li>Project Management</li>
-              <li>Technical Support</li>
+              <li><strong>Tel:</strong> +603-7770 2012</li>
+              <li><strong>Fax:</strong> +603-7770 4012</li>
+              <li><strong>Email:</strong> admin@mediliance.my</li>
+              <li><strong>Hours:</strong> Mon – Fri: 9:00 AM – 6:00 PM</li>
             </ul>
           </div>
 
-          {/* Company */}
-          <div className="space-y-4">
-            <h4 className="font-semibold text-foreground">Company</h4>
+          {/* Certifications & Compliance */}
+          {/* <div className="space-y-4">
+            <h4 className="text-lg font-semibold text-foreground">Certifications & Compliance</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
-              <li>About Us</li>
-              <li>Our Clients</li>
-              <li>Investor Relations</li>
-              <li>Careers</li>
+              <li>GDPMD Certified</li>
+              <li>Registered with Medical Device Authority (MDA)</li>
+              <li>Certified Contractor with CIDB Malaysia</li>
+              <li>Registered Supplier with Ministry of Finance (MOF)</li>
+              <li>Recognized Bumiputera Status Company</li>
             </ul>
-          </div>
+          </div> */}
 
-          {/* Contact */}
-          <div className="space-y-4">
-            <h4 className="font-semibold text-foreground">Contact</h4>
-            <ul className="space-y-2 text-sm text-muted-foreground">
-              <li>24/7 Support</li>
-              <li>Technical Services</li>
-              <li>Sales Inquiries</li>
-              <li>Partnership</li>
-            </ul>
-          </div>
         </div>
 
-        <div className="mt-8 pt-8 border-t border-border">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-muted-foreground text-sm">
-              © 2024 Mediliance. All rights reserved.
-            </p>
-            <div className="flex space-x-6 mt-4 md:mt-0">
-              <a href="#" className="text-muted-foreground hover:text-foreground text-sm">
-                Privacy Policy
-              </a>
-              <a href="#" className="text-muted-foreground hover:text-foreground text-sm">
-                Terms of Service
-              </a>
-              <a href="#" className="text-muted-foreground hover:text-foreground text-sm">
-                Contact
-              </a>
-            </div>
-          </div>
+        {/* Bottom Bar */}
+        <div className="mt-10 pt-6 border-t border-border">
+          <p className="text-muted-foreground text-sm text-center">
+            © {new Date().getFullYear()} Mediliance (M) Sdn. Bhd. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>

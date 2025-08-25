@@ -15,42 +15,50 @@ import {
   Target,
   Lightbulb
 } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+
+const ease = [0.22, 1, 0.36, 1];
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease } }
+};
+
+const fade = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { duration: 0.6, ease } }
+};
+
+const stagger = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.12, delayChildren: 0.1 } }
+};
+
+const imageReveal = {
+  hidden: { opacity: 0, scale: 0.96 },
+  visible: { opacity: 1, scale: 1, transition: { duration: 0.7, ease } }
+};
+
+const hoverable = {
+  whileHover: { y: -4, scale: 1.02 },
+  whileTap: { scale: 0.98 },
+  transition: { type: 'spring', stiffness: 320, damping: 24 }
+};
 
 export function ShareholdersPage() {
   const [currentShareholder, setCurrentShareholder] = useState(0);
+  const [direction, setDirection] = useState(1); // 1 for next/right, -1 for prev/left
 
   const keyMetrics = [
-    { metric: "Market Presence", value: "15 Countries", description: "Global reach across key healthcare markets" },
-    { metric: "Client Base", value: "500+ Facilities", description: "Diverse healthcare organizations served" },
-    { metric: "Employee Count", value: "2,800+", description: "Dedicated professionals worldwide" },
+    { metric: "Client Base", value: "50+ Facilities", description: "Diverse healthcare organizations served" },
     { metric: "Service Offerings", value: "3 Core Services", description: "Equipment, Engineering, and Project Management" }
   ];
 
   const reports = [
-    {
-      title: "Annual Report 2024",
-      description: "Comprehensive overview of financial performance and strategic initiatives",
-      date: "March 2024",
-      type: "PDF"
-    },
-    {
-      title: "Q4 2024 Earnings Report",
-      description: "Quarterly financial results and management discussion",
-      date: "February 2024",
-      type: "PDF"
-    },
-    {
-      title: "ESG Report 2024",
-      description: "Environmental, Social, and Governance initiatives and progress",
-      date: "April 2024",
-      type: "PDF"
-    },
-    {
-      title: "Investor Presentation",
-      description: "Strategic overview and growth opportunities presentation",
-      date: "January 2024",
-      type: "PDF"
-    }
+    { title: "Annual Report 2024", description: "Comprehensive overview of financial performance and strategic initiatives", date: "March 2024", type: "PDF" },
+    { title: "Q4 2024 Earnings Report", description: "Quarterly financial results and management discussion", date: "February 2024", type: "PDF" },
+    { title: "ESG Report 2024", description: "Environmental, Social, and Governance initiatives and progress", date: "April 2024", type: "PDF" },
+    { title: "Investor Presentation", description: "Strategic overview and growth opportunities presentation", date: "January 2024", type: "PDF" }
   ];
 
   const principles = [
@@ -118,168 +126,232 @@ export function ShareholdersPage() {
 
   const shareholders = [
     {
-      name: "HealthTech Capital Partners",
-      percentage: "34.2%",
-      type: "Institutional Investor",
+      name: "Mohammad Faqrullah Mohammad Riazzuddin",
+      position: "Director",
       description: "Leading healthcare investment firm focused on medical technology companies",
       image: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&h=300&fit=crop",
-      details: "HealthTech Capital Partners has been our primary institutional investor since 2010, providing strategic guidance and capital for expansion into emerging markets."
+      details: "A graduate from UNITEN. Good experience in both sales and project management and technical aspect of engineering"
     },
     {
-      name: "Global Medical Holdings",
-      percentage: "28.7%",
-      type: "Strategic Investor",
+      name: "Mohammad Riazzuddin Ali Ahmad",
+      position: "Chief Executive Officer and Director",
       description: "International medical equipment and services conglomerate",
       image: "https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=400&h=300&fit=crop",
-      details: "Global Medical Holdings brings valuable industry expertise and international market access, supporting our global expansion strategy and service enhancement initiatives."
+      details: "A graduate in Electronics and Mathematics from Southern Illinois University at Edwardsville USA. He has an excellent relationship with opinion leaders of medical and healthcare in Malaysia"
     },
     {
-      name: "Founders & Management",
-      percentage: "15.6%",
-      type: "Management Ownership",
+      name: "Noreha Binti Hassan",
+      position: "Director",
       description: "Company founders and senior management team",
       image: "https://images.unsplash.com/photo-1560472355-536de3962603?w=400&h=300&fit=crop",
       details: "Strong management ownership ensures alignment between leadership decisions and long-term shareholder value creation, maintaining our commitment to operational excellence."
-    },
-    {
-      name: "Public Shareholders",
-      percentage: "21.5%",
-      type: "Public Investment",
-      description: "Individual and institutional public market investors",
-      image: "https://images.unsplash.com/photo-1551836022-4c4c79ecde51?w=400&h=300&fit=crop",
-      details: "Our public shareholders benefit from transparent reporting and consistent dividend policy, with strong liquidity and growth potential in the expanding healthcare sector."
     }
   ];
 
   useEffect(() => {
     const interval = setInterval(() => {
+      setDirection(1);
       setCurrentShareholder((prev) => (prev + 1) % shareholders.length);
     }, 5000);
-
     return () => clearInterval(interval);
   }, [shareholders.length]);
 
   const nextShareholder = () => {
+    setDirection(1);
     setCurrentShareholder((prev) => (prev + 1) % shareholders.length);
   };
 
   const prevShareholder = () => {
+    setDirection(-1);
     setCurrentShareholder((prev) => (prev - 1 + shareholders.length) % shareholders.length);
+  };
+
+  // Variants for the slideshow (directional slide)
+  const slideVariants = {
+    enter: (dir) => ({ x: dir > 0 ? 40 : -40, opacity: 0 }),
+    center: { x: 0, opacity: 1, transition: { duration: 0.45, ease } },
+    exit: (dir) => ({ x: dir > 0 ? -40 : 40, opacity: 0, transition: { duration: 0.35, ease } })
   };
 
   return (
     <div className="min-h-screen py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
         {/* Hero Section */}
-        <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+        <motion.div
+          className="text-center mb-16"
+          initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.25 }} variants={stagger}
+        >
+          <motion.h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6" variants={fadeUp}>
             Investor Relations
-          </h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          </motion.h1>
+          <motion.p className="text-xl text-muted-foreground max-w-3xl mx-auto" variants={fadeUp}>
             Mediliance delivers consistent growth and value creation for shareholders 
             through strategic market expansion, operational excellence, and commitment 
             to comprehensive healthcare technology solutions.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
         {/* Principles Section */}
-        <section className="mb-20">
+        <motion.section
+          className="mb-20"
+          initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={stagger}
+        >
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-foreground mb-4">
+            <motion.h2 className="text-3xl font-bold text-foreground mb-4" variants={fadeUp}>
               Our Investment Principles
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            </motion.h2>
+            <motion.p className="text-lg text-muted-foreground max-w-2xl mx-auto" variants={fadeUp}>
               These core principles guide our strategic decisions and ensure sustainable 
               value creation for all stakeholders in the healthcare ecosystem.
-            </p>
+            </motion.p>
           </div>
           <div className="space-y-12">
             {principles.map((principle, index) => (
-              <Card key={index} className="p-8 hover:shadow-lg transition-shadow">
-                <div className="flex items-start space-x-6">
-                  <principle.icon className="h-16 w-16 text-primary flex-shrink-0" />
-                  <div className="flex-grow">
-                    <h3 className="text-2xl font-bold text-foreground mb-4">{principle.title}</h3>
-                    <p className="text-lg text-muted-foreground mb-6">{principle.description}</p>
-                    <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                      {principle.points.map((point, pointIndex) => (
-                        <li key={pointIndex} className="flex items-start">
-                          <div className="w-2 h-2 bg-primary rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                          <span className="text-muted-foreground text-sm">{point}</span>
-                        </li>
-                      ))}
-                    </ul>
+              <motion.div key={index} variants={fadeUp} {...hoverable}>
+                <Card className="p-8 hover:shadow-lg transition-shadow">
+                  <div className="flex items-start space-x-6">
+                    <principle.icon className="h-16 w-16 text-primary flex-shrink-0" />
+                    <div className="flex-grow">
+                      <h3 className="text-2xl font-bold text-foreground mb-4">{principle.title}</h3>
+                      <p className="text-lg text-muted-foreground mb-6">{principle.description}</p>
+                      <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        {principle.points.map((point, pointIndex) => (
+                          <li key={pointIndex} className="flex items-start">
+                            <div className="w-2 h-2 bg-primary rounded-full mr-3 mt-2 flex-shrink-0"></div>
+                            <span className="text-muted-foreground text-sm">{point}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
-                </div>
-              </Card>
+                </Card>
+              </motion.div>
             ))}
           </div>
-        </section>
+        </motion.section>
 
         {/* Key Metrics */}
-        <section className="mb-20">
-          <div className="bg-muted/30 rounded-lg p-8">
-            <h2 className="text-3xl font-bold text-foreground text-center mb-12">
-              Key Business Metrics
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {keyMetrics.map((metric, index) => (
-                <div key={index} className="text-center">
-                  <div className="text-2xl font-bold text-primary mb-2">{metric.value}</div>
-                  <div className="font-semibold mb-2">{metric.metric}</div>
-                  <div className="text-muted-foreground text-sm">{metric.description}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+        <motion.section
+        className="mb-20"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        variants={stagger}
+        >
+  <motion.div
+    className="bg-muted/30 rounded-lg p-8 md:p-10 flex flex-col items-center text-center"
+    variants={fadeUp}
+  >
+    <h2 className="text-3xl font-bold text-foreground mb-12">
+      Key Business Metrics
+    </h2>
 
-        {/* Shareholders Slideshow */}
-        <section className="mb-20">
+    <div className="w-full max-w-4xl grid grid-cols-1 sm:grid-cols-2 gap-8 justify-items-center">
+      {keyMetrics.map((metric, index) => (
+        <motion.div key={index} variants={fadeUp}>
+          <div className="text-center">
+            <div className="text-2xl font-bold text-primary mb-2">{metric.value}</div>
+            <div className="font-semibold mb-2">{metric.metric}</div>
+            <div className="text-muted-foreground text-sm">{metric.description}</div>
+          </div>
+        </motion.div>
+      ))}
+    </div>
+  </motion.div>
+</motion.section>
+
+
+        {/* Shareholders Slideshow (UPDATED LAYOUT) */}
+        <motion.section
+          className="mb-20"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={stagger}
+        >
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-foreground mb-4">
+            <motion.h2 className="text-3xl font-bold text-foreground mb-4" variants={fadeUp}>
               Our Shareholders
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            </motion.h2>
+            <motion.p className="text-lg text-muted-foreground max-w-2xl mx-auto" variants={fadeUp}>
               Mediliance is backed by leading healthcare investors and strategic partners 
               who share our vision for advancing medical technology solutions.
-            </p>
+            </motion.p>
           </div>
-          
+
           <div className="relative">
-            <Card className="p-8 min-h-[500px]">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch h-full">
-                <div className="flex flex-col">
-                  <ImageWithFallback
-                    src={shareholders[currentShareholder].image}
-                    alt={shareholders[currentShareholder].name}
-                    className="rounded-lg shadow-lg w-full h-full min-h-[350px] object-cover"
-                  />
-                </div>
-                <div className="flex flex-col justify-center">
-                  <div className="mb-4">
-                    <div className="text-3xl font-bold text-primary mb-2">
-                      {shareholders[currentShareholder].percentage}
-                    </div>
-                    <div className="text-sm text-muted-foreground mb-1">
-                      {shareholders[currentShareholder].type}
-                    </div>
-                  </div>
-                  <h3 className="text-2xl font-bold text-foreground mb-4">
-                    {shareholders[currentShareholder].name}
-                  </h3>
-                  <p className="text-lg text-muted-foreground mb-4">
-                    {shareholders[currentShareholder].description}
-                  </p>
-                  <p className="text-muted-foreground">
-                    {shareholders[currentShareholder].details}
-                  </p>
-                </div>
-              </div>
-            </Card>
+            <motion.div variants={fadeUp}>
+              <Card className="p-8 min-h-[500px]">
+                <AnimatePresence custom={direction} mode="popLayout">
+                  <motion.div
+                    key={currentShareholder}
+                    className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch h-full"
+                    custom={direction}
+                    variants={slideVariants}
+                    initial="enter"
+                    animate="center"
+                    exit="exit"
+                  >
+                    {/* Image */}
+                    <motion.div className="flex flex-col" variants={imageReveal} {...hoverable}>
+                      <ImageWithFallback
+                        src={shareholders[currentShareholder].image}
+                        alt={shareholders[currentShareholder].name}
+                        className="rounded-lg shadow-lg w-full h-full min-h-[350px] object-cover"
+                      />
+                    </motion.div>
+
+                    {/* Text Content — Name → Position → Description → Details */}
+                    <motion.div className="flex flex-col justify-center" variants={stagger}>
+                      {/* Name */}
+                      <motion.h3
+                        className="text-2xl md:text-3xl font-bold text-foreground"
+                        variants={fadeUp}
+                      >
+                        {shareholders[currentShareholder].name}
+                      </motion.h3>
+
+                      {/* Position / Role */}
+                      {shareholders[currentShareholder].position && (
+                        <motion.div
+                          className="text-sm md:text-base text-muted-foreground mt-2"
+                          variants={fadeUp}
+                        >
+                          {shareholders[currentShareholder].position}
+                        </motion.div>
+                      )}
+
+                      {/* Divider */}
+                      <motion.div className="h-px bg-border my-5" variants={fadeUp} />
+
+                      {/* Description */}
+                      {shareholders[currentShareholder].description && (
+                        <motion.p
+                          className="text-base md:text-lg text-muted-foreground mb-4 leading-relaxed"
+                          variants={fadeUp}
+                        >
+                          {shareholders[currentShareholder].description}
+                        </motion.p>
+                      )}
+
+                      {/* Details */}
+                      {shareholders[currentShareholder].details && (
+                        <motion.p
+                          className="text-muted-foreground leading-relaxed"
+                          variants={fadeUp}
+                        >
+                          {shareholders[currentShareholder].details}
+                        </motion.p>
+                      )}
+                    </motion.div>
+                  </motion.div>
+                </AnimatePresence>
+              </Card>
+            </motion.div>
 
             {/* Navigation Controls */}
-            <div className="flex items-center justify-between mt-6">
+            <motion.div className="flex items-center justify-between mt-6" variants={fadeUp}>
               <Button
                 variant="outline"
                 size="sm"
@@ -289,17 +361,19 @@ export function ShareholdersPage() {
                 <ChevronLeft className="h-4 w-4 mr-1" />
                 Previous
               </Button>
-              
+
               <div className="flex space-x-2">
                 {shareholders.map((_, index) => (
                   <button
                     key={index}
                     className={`w-3 h-3 rounded-full transition-colors ${
-                      index === currentShareholder 
-                        ? 'bg-primary' 
-                        : 'bg-muted-foreground/30'
+                      index === currentShareholder ? 'bg-primary' : 'bg-muted-foreground/30'
                     }`}
-                    onClick={() => setCurrentShareholder(index)}
+                    onClick={() => {
+                      setDirection(index > currentShareholder ? 1 : -1);
+                      setCurrentShareholder(index);
+                    }}
+                    aria-label={`Go to shareholder ${index + 1}`}
                   />
                 ))}
               </div>
@@ -313,47 +387,11 @@ export function ShareholdersPage() {
                 Next
                 <ChevronRight className="h-4 w-4 ml-1" />
               </Button>
-            </div>
+            </motion.div>
           </div>
-        </section>
+        </motion.section>
 
-        {/* Financial Reports */}
-        <section>
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-foreground mb-4">
-              Financial Reports &amp; Documents
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Access our latest financial reports, SEC filings, and investor materials.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {reports.map((report, index) => (
-              <Card key={index} className="p-6 hover:shadow-lg transition-shadow">
-                <CardHeader className="pb-4">
-                  <div className="flex items-start justify-between">
-                    <div className="flex-1 min-w-0">
-                      <CardTitle className="text-lg mb-2">{report.title}</CardTitle>
-                      <p className="text-muted-foreground text-sm">{report.description}</p>
-                    </div>
-                    <FileText className="h-8 w-8 text-primary flex-shrink-0 ml-4" />
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex items-center justify-between">
-                    <div className="text-sm text-muted-foreground">
-                      {report.date} • {report.type}
-                    </div>
-                    <Button variant="outline" size="sm" className="sm:text-base text-sm px-2 sm:px-3">
-                      <Download className="h-4 w-4 mr-2" />
-                      Download
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </section>
+
       </div>
     </div>
   );
