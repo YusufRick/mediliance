@@ -13,6 +13,9 @@ import {
   School,
 } from 'lucide-react';
 import { motion } from 'framer-motion';
+import medEquipment from "../assets/mriMachine.jpg";
+import biomedService from "../assets/radiology.jpg";
+import projectManagement from "../assets/management.jpg";
 
 const ease = [0.22, 1, 0.36, 1];
 
@@ -58,7 +61,7 @@ export function ServicesPage() {
         'Anesthesia and respiratory equipment',
       ],
       image:
-        'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=300&fit=crop',
+        medEquipment,
     },
     {
       icon: Wrench,
@@ -74,7 +77,7 @@ export function ServicesPage() {
         'Equipment lifecycle management',
       ],
       image:
-        'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=400&h=300&fit=crop',
+        biomedService,
     },
     {
       icon: Building2,
@@ -90,7 +93,7 @@ export function ServicesPage() {
         'Post-implementation support',
       ],
       image:
-        'https://images.unsplash.com/photo-1504813184591-01572f98c85f?w=400&h=300&fit=crop',
+        projectManagement,
     },
   ];
 
@@ -187,7 +190,7 @@ export function ServicesPage() {
                     {service.features.map((feature, i) => (
                       <motion.li key={i} className="flex items-center" variants={fade}>
                         <CheckCircle className="h-5 w-5 text-primary mr-3 flex-shrink-0" />
-                        <span className="text-muted-foreground">{feature}</span>
+                        <span className="text-muted-foreground text-blue-900">{feature}</span>
                       </motion.li>
                     ))}
                   </ul>
@@ -232,7 +235,7 @@ export function ServicesPage() {
                 >
                   <feature.icon className="h-16 w-16 text-primary mx-auto mb-4" />
                   <h3 className="font-semibold mb-3">{feature.title}</h3>
-                  <p className="text-muted-foreground">{feature.description}</p>
+                  <p className="text-muted-foreground text-blue-900">{feature.description}</p>
                 </motion.div>
               ))}
             </div>
@@ -278,7 +281,7 @@ export function ServicesPage() {
                 <Card className="p-6 text-center hover:shadow-lg transition-shadow h-full">
                   <s.icon className="h-12 w-12 text-primary mx-auto mb-4" />
                   <h3 className="font-semibold mb-2">{s.title}</h3>
-                  <p className="text-muted-foreground text-sm">{s.desc}</p>
+                  <p className="text-muted-foreground text-sm text-blue-900">{s.desc}</p>
                 </Card>
               </motion.div>
             ))}

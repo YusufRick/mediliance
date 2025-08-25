@@ -214,7 +214,7 @@ export function ClientsPage() {
                     <MotionCounter to={stat.number} />
                   </div>
                   <div className="font-semibold mb-1">{stat.label}</div>
-                  <div className="text-muted-foreground text-sm">{stat.description}</div>
+                  <div className="text-muted-foreground text-sm text-blue-900">{stat.description}</div>
                 </motion.div>
               ))}
             </div>

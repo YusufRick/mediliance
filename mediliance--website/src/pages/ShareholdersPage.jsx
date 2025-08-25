@@ -16,6 +16,9 @@ import {
   Lightbulb
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import  topG  from '../assets/topg.jpeg';
+import  bottomG from '../assets/bottomg.jpeg';
+import defaultG from '../assets/default.jpg';
 
 const ease = [0.22, 1, 0.36, 1];
 
@@ -129,21 +132,21 @@ export function ShareholdersPage() {
       name: "Mohammad Faqrullah Mohammad Riazzuddin",
       position: "Director",
       description: "Leading healthcare investment firm focused on medical technology companies",
-      image: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&h=300&fit=crop",
+      image: bottomG,
       details: "A graduate from UNITEN. Good experience in both sales and project management and technical aspect of engineering"
     },
     {
       name: "Mohammad Riazzuddin Ali Ahmad",
       position: "Chief Executive Officer and Director",
       description: "International medical equipment and services conglomerate",
-      image: "https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=400&h=300&fit=crop",
+      image: topG,
       details: "A graduate in Electronics and Mathematics from Southern Illinois University at Edwardsville USA. He has an excellent relationship with opinion leaders of medical and healthcare in Malaysia"
     },
     {
       name: "Noreha Binti Hassan",
       position: "Director",
       description: "Company founders and senior management team",
-      image: "https://images.unsplash.com/photo-1560472355-536de3962603?w=400&h=300&fit=crop",
+      image: defaultG,
       details: "Strong management ownership ensures alignment between leadership decisions and long-term shareholder value creation, maintaining our commitment to operational excellence."
     }
   ];
@@ -214,12 +217,12 @@ export function ShareholdersPage() {
                     <principle.icon className="h-16 w-16 text-primary flex-shrink-0" />
                     <div className="flex-grow">
                       <h3 className="text-2xl font-bold text-foreground mb-4">{principle.title}</h3>
-                      <p className="text-lg text-muted-foreground mb-6">{principle.description}</p>
+                      <p className="text-lg text-muted-foreground mb-6 ">{principle.description}</p>
                       <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
                         {principle.points.map((point, pointIndex) => (
                           <li key={pointIndex} className="flex items-start">
                             <div className="w-2 h-2 bg-primary rounded-full mr-3 mt-2 flex-shrink-0"></div>
-                            <span className="text-muted-foreground text-sm">{point}</span>
+                            <span className="text-muted-foreground text-sm text-blue-900">{point}</span>
                           </li>
                         ))}
                       </ul>
@@ -253,7 +256,7 @@ export function ShareholdersPage() {
           <div className="text-center">
             <div className="text-2xl font-bold text-primary mb-2">{metric.value}</div>
             <div className="font-semibold mb-2">{metric.metric}</div>
-            <div className="text-muted-foreground text-sm">{metric.description}</div>
+            <div className="text-muted-foreground text-sm text-blue-900">{metric.description}</div>
           </div>
         </motion.div>
       ))}
@@ -328,7 +331,7 @@ export function ShareholdersPage() {
                       {/* Description */}
                       {shareholders[currentShareholder].description && (
                         <motion.p
-                          className="text-base md:text-lg text-muted-foreground mb-4 leading-relaxed"
+                          className="text-base md:text-lg text-muted-foreground mb-4 leading-relaxed "
                           variants={fadeUp}
                         >
                           {shareholders[currentShareholder].description}
@@ -338,7 +341,7 @@ export function ShareholdersPage() {
                       {/* Details */}
                       {shareholders[currentShareholder].details && (
                         <motion.p
-                          className="text-muted-foreground leading-relaxed"
+                          className="text-muted-foreground leading-relaxed text-blue-900"
                           variants={fadeUp}
                         >
                           {shareholders[currentShareholder].details}

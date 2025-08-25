@@ -93,7 +93,7 @@ export function Homepage({ onNavigate }) {
                 they need to deliver exceptional patient care.
               </motion.p>
 
-              <motion.div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8" variants={stagger}>
+              <motion.div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8 text-blue-800" variants={stagger}>
                 <motion.div className="flex items-center" variants={fadeUp}>
                     <Heart className="h-5 w-5 text-primary mr-3" />
                     <span>Patient-Centered Focus</span>
@@ -276,7 +276,7 @@ export function Homepage({ onNavigate }) {
                   <TrendingUp className="h-8 w-8 text-primary mb-2" />
                   <p className="font-semibold">Revenue Growth</p>
                   <p className="text-2xl font-bold text-primary">+15%</p>
-                  <p className="text-sm text-muted-foreground">Year over year</p>
+                  <p className="text-sm text-muted-foreground text-blue-900">Year over year</p>
                 </motion.div>
               </motion.div>
 
