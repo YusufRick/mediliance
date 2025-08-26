@@ -5,7 +5,11 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        cool: ['Delmon Delicate', 'sans-serif'],
+      },
+    },
   },
   plugins: [],
 }

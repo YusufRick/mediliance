@@ -51,7 +51,7 @@ export function Homepage({ onNavigate }) {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <motion.h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6" variants={fadeUp}>
+            <motion.h1 className="font-cool text-4xl md:text-6xl text-foreground mb-6" variants={fadeUp}>
               Medical Excellence Through
               <span className="block text-primary">Innovation &amp; Service</span>
             </motion.h1>
