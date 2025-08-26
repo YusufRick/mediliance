@@ -229,7 +229,7 @@ export function AboutPage() {
                 <Card className="text-center p-6 hover:shadow-lg transition-shadow">
                   <value.icon className="h-12 w-12 text-primary mx-auto mb-4" />
                   <h3 className="font-semibold mb-3">{value.title}</h3>
-                  <p className="text-muted-foreground text-sm">{value.description}</p>
+                  <p className="text-muted-foreground text-sm text-blue-900">{value.description}</p>
                 </Card>
               </motion.div>
             ))}
@@ -292,7 +292,7 @@ export function AboutPage() {
               <Card className="text-center p-6">
                 <Shield className="h-16 w-16 text-primary mx-auto mb-4" />
                 <h3 className="font-semibold mb-2">GDPMD Certified</h3>
-                <p className="text-muted-foreground text-sm">
+                <p className="text-muted-foreground text-sm text-blue-900">
                   Good Distribution Practice for Medical Devices (Malaysia)
                 </p>
               </Card>
@@ -302,7 +302,7 @@ export function AboutPage() {
               <Card className="text-center p-6">
                 <CheckCircle className="h-16 w-16 text-primary mx-auto mb-4" />
                 <h3 className="font-semibold mb-2">MDA Registered</h3>
-                <p className="text-muted-foreground text-sm">
+                <p className="text-muted-foreground text-sm text-blue-900">
                   Medical Device Authority compliance under Act 737
                 </p>
               </Card>
@@ -312,7 +312,7 @@ export function AboutPage() {
               <Card className="text-center p-6">
                 <Award className="h-16 w-16 text-primary mx-auto mb-4" />
                 <h3 className="font-semibold mb-2">CIDB Certified</h3>
-                <p className="text-muted-foreground text-sm">
+                <p className="text-muted-foreground text-sm text-blue-900">
                   Certified contractor for healthcare infrastructure works
                 </p>
               </Card>
@@ -322,7 +322,7 @@ export function AboutPage() {
               <Card className="text-center p-6">
                 <Users className="h-16 w-16 text-primary mx-auto mb-4" />
                 <h3 className="font-semibold mb-2">MOF Registered</h3>
-                <p className="text-muted-foreground text-sm">
+                <p className="text-muted-foreground text-sm text-blue-900">
                   Ministry of Finance supplier for public sector procurement
                 </p>
               </Card>
@@ -332,7 +332,7 @@ export function AboutPage() {
               <Card className="text-center p-6">
                 <Globe className="h-16 w-16 text-primary mx-auto mb-4" />
                 <h3 className="font-semibold mb-2">Bumiputera Status</h3>
-                <p className="text-muted-foreground text-sm">
+                <p className="text-muted-foreground text-sm text-blue-900">
                   Recognized Bumiputera company supporting national initiatives
                 </p>
               </Card>

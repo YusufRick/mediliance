@@ -26,7 +26,7 @@ export function Header({ currentPage, onNavigate }) {
           {/* Logo */}
           <motion.button
             onClick={() => onNavigate('home')}
-            className="text-2xl font-bold text-primary relative"
+            className="text-2xl font-bold text-primary relative text-red-800"
             whileHover={{ y: -1 }}
             whileTap={{ scale: 0.98 }}
             transition={spring}
