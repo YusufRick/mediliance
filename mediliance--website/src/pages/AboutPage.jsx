@@ -13,6 +13,8 @@ import {
   HandHeart
 } from 'lucide-react';
 import { motion, animate, useInView } from 'framer-motion';
+import officeImg2 from "../assets/office2.jpg";
+
 
 const ease = [0.22, 1, 0.36, 1];
 
@@ -199,7 +201,7 @@ export function AboutPage() {
             </div>
             <motion.div className="relative" variants={imageReveal}>
               <ImageWithFallback
-                src="https://images.unsplash.com/photo-1504813184591-01572f98c85f?w=600&h=400&fit=crop"
+                src={officeImg2}
                 alt="Mediliance headquarters and team"
                 className="rounded-lg shadow-lg w-full h-96 object-cover"
               />

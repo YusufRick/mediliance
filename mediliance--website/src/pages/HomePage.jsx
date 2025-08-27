@@ -14,6 +14,8 @@ import {
   CheckCircle
 } from 'lucide-react';
 import { motion } from 'framer-motion';
+import officeImg from "../assets/office.jpg";
+
 
 const ease = [0.22, 1, 0.36, 1];
 
@@ -123,7 +125,7 @@ export function Homepage({ onNavigate }) {
 
             <motion.div className="relative" variants={imageReveal}>
               <ImageWithFallback
-                src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=600&h=400&fit=crop"
+                src={officeImg}
                 alt="Medical professionals using advanced equipment"
                 className="rounded-lg shadow-lg w-full h-96 object-cover"
               />

@@ -17,7 +17,7 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import  topG  from '../assets/topg.jpeg';
-import  bottomG from '../assets/bottomg.jpeg';
+import  bottomG from '../assets/faqrul.jpg';
 import defaultG from '../assets/default.jpg';
 
 const ease = [0.22, 1, 0.36, 1];
