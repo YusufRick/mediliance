@@ -13,7 +13,7 @@ import {
   School,
 } from 'lucide-react';
 import { motion } from 'framer-motion';
-import medEquipment from "../assets/mriMachine.jpg";
+import medEquipment from "../assets/mriMachine2.jpeg";
 import biomedService from "../assets/radiology.jpg";
 import projectManagement from "../assets/management.jpg";
 
