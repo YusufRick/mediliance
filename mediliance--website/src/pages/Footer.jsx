@@ -27,7 +27,7 @@ export function Footer() {
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li><strong>Tel:</strong> +603-7770 2012</li>
               <li><strong>Fax:</strong> +603-7770 4012</li>
-              <li><strong>Email:</strong> admin@mediliance.my</li>
+              <li><strong>Email:</strong> admin@mediliance.com.my</li>
               <li><strong>Hours:</strong> Mon – Fri: 9:00 AM – 6:00 PM</li>
             </ul>
           </div>
