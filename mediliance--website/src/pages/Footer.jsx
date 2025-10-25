@@ -32,17 +32,6 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Certifications & Compliance */}
-          {/* <div className="space-y-4">
-            <h4 className="text-lg font-semibold text-foreground">Certifications & Compliance</h4>
-            <ul className="space-y-2 text-sm text-muted-foreground">
-              <li>GDPMD Certified</li>
-              <li>Registered with Medical Device Authority (MDA)</li>
-              <li>Certified Contractor with CIDB Malaysia</li>
-              <li>Registered Supplier with Ministry of Finance (MOF)</li>
-              <li>Recognized Bumiputera Status Company</li>
-            </ul>
-          </div> */}
 
         </div>
 
