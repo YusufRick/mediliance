@@ -1,6 +1,7 @@
 import { MotionButton as Button } from '../components/ui/MotionButton';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
+import { AnnouncementCard } from '../components/AnnouncementCard';
 import { 
   Heart, 
   Shield, 
