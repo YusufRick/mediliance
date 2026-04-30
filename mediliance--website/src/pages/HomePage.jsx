@@ -1,6 +1,7 @@
 import { MotionButton as Button } from '../components/ui/MotionButton';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
+import { AnnouncementCard } from '../components/AnnouncementCard';
 import { 
   Heart, 
   Shield, 
@@ -72,6 +73,19 @@ export function Homepage({ onNavigate }) {
               </Button>
             </motion.div>
           </div>
+        </div>
+      </motion.section>
+
+      {/* Announcement Card */}
+      <motion.section
+        className="py-20 bg-background"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.1 }}
+        variants={fadeUp}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <AnnouncementCard />
         </div>
       </motion.section>
 
