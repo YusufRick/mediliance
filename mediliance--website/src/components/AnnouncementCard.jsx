@@ -175,7 +175,7 @@ export function AnnouncementCard() {
                   {requirements.map((r, i) => (
                     <motion.div
                       key={i}
-                      className="flex flex-col gap-2 rounded-2xl border border-rose-100 bg-white px-4 py-3 sm:flex-row sm:items-center sm:justify-between sm:gap-4"
+                      className="flex flex-col gap-2 rounded-2xl border border-rose-100 bg-white px-4 py-3 transition hover:border-rose-300 hover:bg-rose-50/60 sm:flex-row sm:items-center sm:gap-4"
                       variants={fadeUp}
                     >
                       <span className="flex-1 text-sm font-medium text-slate-800">
@@ -208,36 +208,45 @@ export function AnnouncementCard() {
               <motion.div className="grid grid-cols-1 gap-5 lg:grid-cols-3" variants={stagger}>
                 {placements.map((p) => (
                   <motion.div
-                    key={p.id}
-                    className="rounded-2xl border border-rose-100 bg-white p-4"
-                    variants={fadeUp}
-                  >
-                    <div className="mb-2 flex items-start gap-3">
-                      <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-rose-950 to-red-800 text-[10px] font-bold text-white">
-                        {p.id}
-                      </span>
+  key={p.id}
+  className="rounded-2xl border border-rose-100 bg-white p-4 shadow-sm transition-colors hover:border-rose-300 hover:bg-rose-50/40 hover:shadow-lg"
+  variants={fadeUp}
+  whileHover={{
+    scale: 1.04,
+    y: -6,
+  }}
+  transition={{
+    type: "spring",
+    stiffness: 260,
+    damping: 18,
+  }}
+>
+  <div className="mb-2 flex items-start gap-3">
+    <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-rose-950 to-red-800 text-[10px] font-bold text-white">
+      {p.id}
+    </span>
 
-                      <div>
-                        <p className="text-sm font-bold text-slate-900">
-                          {p.company}
-                        </p>
+    <div>
+      <p className="text-sm font-bold text-slate-900">
+        {p.company}
+      </p>
 
-                        <p className="text-xs font-semibold text-rose-800">
-                          {p.count} positions
-                        </p>
-                      </div>
-                    </div>
+      <p className="text-xs font-semibold text-rose-800">
+        {p.count} positions
+      </p>
+    </div>
+  </div>
 
-                    <p className="text-xs leading-relaxed text-slate-500">
-                      {p.address}
-                    </p>
+  <p className="text-xs leading-relaxed text-slate-500">
+    {p.address}
+  </p>
 
-                    {p.note && (
-                      <p className="mt-1 text-[11px] italic text-slate-500">
-                        * {p.note}
-                      </p>
-                    )}
-                  </motion.div>
+  {p.note && (
+    <p className="mt-1 text-[11px] italic text-slate-500">
+      * {p.note}
+    </p>
+  )}
+</motion.div>
                 ))}
               </motion.div>
             </motion.div>
@@ -262,6 +271,15 @@ export function AnnouncementCard() {
                     key={i}
                     className="flex flex-col gap-1 rounded-2xl border border-rose-100 bg-gradient-to-br from-white to-rose-50/40 px-4 py-3"
                     variants={fadeUp}
+                    whileHover={{
+                      scale: 1.04,
+                      y: -6,
+                    }}
+                    transition={{
+                      type: "spring",
+                      stiffness: 260,
+                      damping: 18,
+                    }}
                   >
 
                     <span className="text-[10px] font-bold uppercase tracking-wide text-slate-500">
