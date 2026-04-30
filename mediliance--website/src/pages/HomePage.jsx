@@ -75,6 +75,19 @@ export function Homepage({ onNavigate }) {
         </div>
       </motion.section>
 
+      {/* Announcement Card */}
+      <motion.section
+        className="py-20 bg-background"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.1 }}
+        variants={fadeUp}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <AnnouncementCard />
+        </div>
+      </motion.section>
+
       {/* About Section */}
       <motion.section
         className="py-20 bg-background"
